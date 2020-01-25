@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- These values are referenced throughout the View, with the "x:Key" attribute acting as a key 
+         Use the general syntax {StaticResource [key]} to access any of these in XAML markup. -->
+    <Color x:Key="GentleHighlightColor" R="200" G="200" B="200" A="255"/>
+    <Color x:Key="StandardHighlightColor" R="100" G="100" B="100" A="255"/>
+
+    <Color x:Key="StandardBorderColor" R="0" G="0" B="0" A="255"/>
+
+    <Color x:Key="StandardBackgroundColor" R="240" G="240" B="240" A="255"/>
+
+    <Color x:Key="StandardErrorColor" R="204" G="0" B="0" A="255"/>
+    <Color x:Key="TransparencyColor" R="0" G="0" B="0" A="0"/>
+
+    <!-- A separate brush usually has to be created for each color, since most DependencyObjects don't accept Color
+    arguments on their own. However, they do accept Brush objects, which can be used to create fancy effects such as
+    gradients and varied strokes. I didn't need any of that, so I used a basic SolidColorBrush and referenced the
+    static resource GentleHighlightColor that I created above. 
+    
+    Additionally, note that I specified a StaticResource. The value of this resource is retrieved at XAML 
+    compile time, before the application even starts. If the value somehow changes during runtime, nothing will update.
+    DynamicResources have their value retrieval deferred until runtime, and will update any components 
+    referencing them if that value changes during runtime. This makes them much more performance-intensive. 
+    
+    Naturally, things related to the overall visual design of the application won't need to be updated
+    during runtime, so I made them all static. -->
+    <SolidColorBrush x:Key="GentleHightlightBrush" Color="{StaticResource GentleHighlightColor}"/>
+    <SolidColorBrush x:Key="StandardHightlightBrush" Color="{StaticResource StandardHighlightColor}"/>
+
+    <SolidColorBrush x:Key="StandardBorderBrush" Color="{StaticResource StandardBorderColor}"/>
+
+    <SolidColorBrush x:Key="StandardBackgroundBrush" Color="{StaticResource StandardBackgroundColor}"/>
+
+    <SolidColorBrush x:Key="StandardErrorBrush" Color="{StaticResource StandardErrorColor}"/>
+    <SolidColorBrush x:Key="TransparencyBrush" Color="{StaticResource TransparencyColor}"/>
+</ResourceDictionary>

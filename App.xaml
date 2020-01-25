@@ -1,0 +1,23 @@
+﻿<Application x:Class="InitiativeTracker.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="View/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Any valid dictionaries can be added here to expose their resources globally.
+            This is why I'm able to reference variables such as GentleHighlight in MainWindow.xaml
+            and elsewhere. To add additional global dictionaries, just create another
+            ResourceDictionary.MergedDictionaries containing a ResourceDictionary with a Source. 
+            
+            Load order is important — if a dictionary tries to reference a resource that is defined
+            in another dictionary that is declared later, an exception will be thrown. This does not
+            happen with DynamicResources, where value lookups occur during runtime when everything
+            is already done loading. See Styles.xaml and Colors.xaml for more information.-->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Dictionaries/Colors.xaml"/>
+                <ResourceDictionary Source="Resources/Dictionaries/Styles.xaml"/>
+                <ResourceDictionary Source="Resources/Dictionaries/Classes.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

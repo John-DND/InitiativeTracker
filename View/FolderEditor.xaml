@@ -1,0 +1,42 @@
+﻿<Window x:Class="InitiativeTracker.View.FolderEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InitiativeTracker.View"
+        xmlns:util="clr-namespace:InitiativeTracker.Data.Util"
+        mc:Ignorable="d"
+        Name="Wnd_FolderEditor"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Title="Rename or create folder" Height="98" Width="350">
+    <Grid>
+        <Border Style="{StaticResource StandardBorder}" Margin="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="Name" FontSize="14"/>
+                    <TextBox Grid.Column="1" MaxLength="24" HorizontalAlignment="Stretch" Margin="2,2,3,2" Style="{StaticResource ValidatingTextBox}">
+                        <TextBox.Text>
+                            <Binding ElementName="Wnd_FolderEditor" Mode="TwoWay" Path="Target.DisplayName" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <util:EntityValidator Type="Name"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </Grid>
+                <Button Content="Save" Grid.Row="1" Margin="2,2,3,2"  Click="Btn_Save_OnClick" VerticalAlignment="Bottom"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

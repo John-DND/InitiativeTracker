@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:stack="clr-namespace:InitiativeTracker.Data.Stack"
+                    xmlns:tray="clr-namespace:InitiativeTracker.Data.Tray"
+                    xmlns:util="clr-namespace:InitiativeTracker.Data.Util">
+
+    <!-- Referencing the EntityStackProvider class in a resource dictionary 
+    like this makes it available for use like any other XAML resource (colors, brushes, etc) 
+    
+    Also, note the syntax used to define and use a CLR (C#) namespace. This is necessary for the
+    XAML compiler to find the file we want. -->
+    <stack:EntityStackProvider x:Key="EntityStackProvider"/>
+    <tray:TreeEntryStackProvider x:Key="TreeEntryStackProvider"/>
+    <util:EnumToStringConverter x:Key="EnumToStringConverter"/>
+    <util:IsGreaterThanZeroConverter x:Key="IsGreaterThanZeroConverter"/>
+    <util:PathToBitmapImageConverter x:Key="PathToBitmapImageConverter"/>
+    <util:IsNullOrEmptyConverter x:Key="IsNullOrEmptyConverter"/>
+</ResourceDictionary>

@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- This defines a standard kind of Border (named StandardBorder) that sets a few
+    border-related parameters automatically when applied. Note that this references another
+    static resource — StandardBorderBrush. When working with static resources, load order is
+    important. For example, if the dictionary containing the definition for StandardBorderBrush 
+    is loaded after this one, an exception will be thrown. -->
+    <Style x:Key="StandardBorder" TargetType="Border">
+        <Style.Setters>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{StaticResource StandardBorderBrush}"/>
+        </Style.Setters>
+    </Style>
+
+    <ControlTemplate x:Key="TextBoxErrorTemplate">
+        <DockPanel>
+            <TextBlock Foreground="Red" FontSize="16">!</TextBlock>
+            <AdornedElementPlaceholder/>
+        </DockPanel>
+    </ControlTemplate>
+
+    <Style x:Key="ValidatingTextBox" TargetType="TextBox">
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Validation.ErrorTemplate" Value="{StaticResource TextBoxErrorTemplate}"/>
+
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="true">
+                <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource StandardErrorBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- This style is applied globally, to all ScrollViewer components, because no x:Key is 
+    defined. This means it isn't even necessary to reference this resource because it's automatically
+    applied. -->
+    <Style TargetType="ScrollViewer">
+        <Style.Setters>
+            <!-- Fixes a glitch with the ScrollViewer component where the vertical bar appears literally 
+            ONE pixel too far right and down. -->
+            <Setter Property="Margin" Value="0,0,1,1"/>
+        </Style.Setters>
+    </Style>
+</ResourceDictionary>
